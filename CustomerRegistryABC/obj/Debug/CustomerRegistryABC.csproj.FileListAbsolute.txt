@@ -1,0 +1,9 @@
+C:\Users\ibrah\source\repos\CustomerRegistryABC\bin\Debug\CustomerRegistryABC.exe.config
+C:\Users\ibrah\source\repos\CustomerRegistryABC\bin\Debug\CustomerRegistryABC.exe
+C:\Users\ibrah\source\repos\CustomerRegistryABC\bin\Debug\CustomerRegistryABC.pdb
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.Properties.Resources.resources
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.csproj.GenerateResource.cache
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.exe
+C:\Users\ibrah\source\repos\CustomerRegistryABC\obj\Debug\CustomerRegistryABC.pdb
