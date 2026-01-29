@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.reptiles.species
 {
+    // Represents a Frog reptile
     internal class Frog : Reptile
     {
+        // Backing field for jump height
         private double hight;
-        public double JumpHeight { get => hight; set => hight = value < 0 ? 0 : (value > 10 ? 10 : value); }
+
+        // Jump height (0–10)
+        public double JumpHeight
+        {
+            get => hight;
+            set => hight = value < 0 ? 0 : (value > 10 ? 10 : value);
+        }
+
+        // Indicates whether the frog can live on land
         public bool CanLiveOnLand { get; set; }
 
+        // Returns full string including frog-specific info
         public override string ToString()
         {
             return base.ToString() +
@@ -19,7 +26,5 @@ namespace EcoPark_Animal_Management_System.category.reptiles.species
                 $"  Jump Height: {JumpHeight}{Environment.NewLine}" +
                 $"  Can Live On Land: {CanLiveOnLand}{Environment.NewLine}";
         }
-
-
     }
 }

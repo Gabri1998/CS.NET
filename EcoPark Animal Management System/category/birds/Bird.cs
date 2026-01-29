@@ -1,22 +1,28 @@
 ﻿using EcoPark_Animal_Management_System.animal_gen;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.birds
 {
-     abstract class Bird : Animal
+    // Abstract base class for all bird animals
+    abstract class Bird : Animal
     {
-
+        // Backing field for wing span
         private double span;
-        public double WingSpan { get => span; set => span = value < 0 ? 0 : (value > 20 ? 20 : value); }
+
+        // Wing span in meters (clamped between 0 and 20)
+        public double WingSpan
+        {
+            get => span;
+            set => span = value < 0 ? 0 : (value > 20 ? 20 : value);
+        }
+
+        // Indicates whether the bird can fly
         public bool CanFly { get; set; }
+
+        // Color of the bird's feathers
         public string FeatherColor { get; set; }
 
-
-
+        // Returns full string representation including bird-specific data
         public override string ToString()
         {
             return base.ToString() +
@@ -25,8 +31,5 @@ namespace EcoPark_Animal_Management_System.category.birds
                 $"  Can Fly: {CanFly}{Environment.NewLine}" +
                 $"  Feather Color: {FeatherColor}{Environment.NewLine}";
         }
-
-
-
     }
 }

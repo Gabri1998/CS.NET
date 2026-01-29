@@ -50,7 +50,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="animal-gen\Animal.cs" />
-    <Compile Include="animal-gen\enums\CategoryType.cs" />
     <Compile Include="animal-gen\enums\GenderType.cs" />
     <Compile Include="AnimalInputForm.cs">
       <SubType>Form</SubType>

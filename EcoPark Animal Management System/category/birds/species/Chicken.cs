@@ -1,18 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.birds.species
 {
+    // Represents a Chicken bird
     internal class Chicken : Bird
     {
-
+        // Indicates whether the chicken is domestic
         public bool IsDomestic { get; set; }
-        private int quantity;
-        public int EggsPerWeek { get => quantity; set => quantity = value < 0 ? 0 : (value > 20 ? 20 : value); }
 
+        // Backing field for egg production
+        private int quantity;
+
+        // Number of eggs produced per week (0–20)
+        public int EggsPerWeek
+        {
+            get => quantity;
+            set => quantity = value < 0 ? 0 : (value > 20 ? 20 : value);
+        }
+
+        // Returns full string representation including chicken-specific data
         public override string ToString()
         {
             return base.ToString() +
@@ -20,7 +26,5 @@ namespace EcoPark_Animal_Management_System.category.birds.species
                 $"  Is Domestic: {IsDomestic}{Environment.NewLine}" +
                 $"  Eggs Per Week: {EggsPerWeek}{Environment.NewLine}";
         }
-
-
     }
 }

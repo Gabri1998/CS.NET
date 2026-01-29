@@ -1,18 +1,18 @@
 ﻿using EcoPark_Animal_Management_System.category.mammal;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.mammal.species
 {
+    // Represents a Cat mammal
     internal class Cat : Mammal
     {
-
+        // Color of the cat's fur
         public string FurColor { get; set; }
+
+        // Indicates whether the cat lives indoors
         public bool IsIndoor { get; set; }
 
+        // Returns full string including cat-specific info
         public override string ToString()
         {
             return base.ToString() +
@@ -20,7 +20,5 @@ namespace EcoPark_Animal_Management_System.category.mammal.species
                 $"  Fur Color: {FurColor}{Environment.NewLine}" +
                 $"  Is Indoor: {IsIndoor}{Environment.NewLine}";
         }
-
-
     }
 }

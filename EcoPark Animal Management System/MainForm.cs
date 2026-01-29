@@ -7,20 +7,27 @@ using System.Windows.Forms;
 
 namespace EcoPark_Animal_Management_System
 {
+    // Main application window
     public partial class MainForm : Form
     {
+        // Stores all created animals during runtime
         private List<Animal> animals = new List<Animal>();
 
+        // UI controls
         private CheckBox chkListAll;
         private ListBox lstAnimals;
         private TextBox txtOutput;
         private PictureBox picAnimal;
 
+        // Category selection
         private RadioButton rbMammal;
         private RadioButton rbBird;
         private RadioButton rbReptile;
+
+        // Species selection
         private ComboBox cmbSpecies;
 
+        // Action buttons
         private Button btnCreate;
         private Button btnLoadImage;
 
@@ -30,13 +37,14 @@ namespace EcoPark_Animal_Management_System
             BuildUI();
         }
 
+        // Builds the UI manually using fixed positioning
         private void BuildUI()
         {
             int xLeft = 20;
             int xRight = 520;
             int y = 20;
 
-            // ---- LIST ALL ----
+            // Toggle list mode
             chkListAll = new CheckBox
             {
                 Text = "List all animals",
@@ -48,6 +56,7 @@ namespace EcoPark_Animal_Management_System
 
             y += 30;
 
+            // List of animals
             lstAnimals = new ListBox
             {
                 Location = new Point(xLeft, y),
@@ -66,6 +75,7 @@ namespace EcoPark_Animal_Management_System
 
             y += 130;
 
+            // Output box for animal details
             txtOutput = new TextBox
             {
                 Location = new Point(xLeft, y),
@@ -78,7 +88,7 @@ namespace EcoPark_Animal_Management_System
 
             y += 140;
 
-            // ---- CATEGORY ----
+            // Category selection group
             GroupBox grpCategory = new GroupBox
             {
                 Text = "Category",
@@ -109,6 +119,7 @@ namespace EcoPark_Animal_Management_System
                 AutoSize = true
             };
 
+            // Update species when category changes
             rbMammal.CheckedChanged += (s, e) => UpdateSpecies();
             rbBird.CheckedChanged += (s, e) => UpdateSpecies();
             rbReptile.CheckedChanged += (s, e) => UpdateSpecies();
@@ -117,11 +128,9 @@ namespace EcoPark_Animal_Management_System
             grpCategory.Controls.Add(rbBird);
             grpCategory.Controls.Add(rbReptile);
 
-            
             y += grpCategory.Height + 10;
 
-
-            // ---- SPECIES ----
+            // Species dropdown
             cmbSpecies = new ComboBox
             {
                 Location = new Point(xLeft, y),
@@ -132,7 +141,7 @@ namespace EcoPark_Animal_Management_System
 
             y += 40;
 
-            // ---- CREATE ----
+            // Create animal button
             btnCreate = new Button
             {
                 Text = "Create Animal",
@@ -142,6 +151,7 @@ namespace EcoPark_Animal_Management_System
             btnCreate.Click += BtnCreate_Click;
             Controls.Add(btnCreate);
 
+            // Image preview
             picAnimal = new PictureBox
             {
                 Location = new Point(xRight, 70),
@@ -151,6 +161,7 @@ namespace EcoPark_Animal_Management_System
             };
             Controls.Add(picAnimal);
 
+            // Load image button
             btnLoadImage = new Button
             {
                 Text = "Load Image",
@@ -163,6 +174,7 @@ namespace EcoPark_Animal_Management_System
             UpdateSpecies();
         }
 
+        // Updates species list based on selected category
         private void UpdateSpecies()
         {
             cmbSpecies.Items.Clear();
@@ -178,6 +190,7 @@ namespace EcoPark_Animal_Management_System
                 cmbSpecies.SelectedIndex = 0;
         }
 
+        // Opens input form and creates a new animal
         private void BtnCreate_Click(object sender, EventArgs e)
         {
             if (cmbSpecies.SelectedItem == null) return;
@@ -197,6 +210,7 @@ namespace EcoPark_Animal_Management_System
             }
         }
 
+        // Loads an image for the last created animal
         private void BtnLoadImage_Click(object sender, EventArgs e)
         {
             if (animals.Count == 0) return;
@@ -209,6 +223,7 @@ namespace EcoPark_Animal_Management_System
             }
         }
 
+        // Refreshes the animal list when list mode is active
         private void RefreshList()
         {
             lstAnimals.Visible = chkListAll.Checked;

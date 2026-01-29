@@ -4,16 +4,19 @@ using System.Windows.Forms;
 
 namespace EcoPark_Animal_Management_System
 {
+    // Simple dialog that shows application information
     public class AboutForm : Form
     {
         public AboutForm()
         {
+            // Form basic settings
             Text = "About";
             Size = new Size(300, 220);
             StartPosition = FormStartPosition.CenterParent;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
 
+            // Application information label
             Controls.Add(new Label
             {
                 Text = "Ahmed Algabri\nEcoPark Animal Management System\nVersion 1.0",
@@ -21,6 +24,7 @@ namespace EcoPark_Animal_Management_System
                 AutoSize = true
             });
 
+            // Information icon
             Controls.Add(new PictureBox
             {
                 Image = SystemIcons.Information.ToBitmap(),
@@ -29,6 +33,7 @@ namespace EcoPark_Animal_Management_System
                 SizeMode = PictureBoxSizeMode.Zoom
             });
 
+            // OK button closes the dialog
             Button ok = new Button
             {
                 Text = "OK",

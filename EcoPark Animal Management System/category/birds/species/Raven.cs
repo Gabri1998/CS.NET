@@ -1,16 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.birds.species
 {
+    // Represents a Raven bird
     internal class Raven : Bird
     {
-        public string BeakColor{ get; set; }
+        // Color of the raven's beak
+        public string BeakColor { get; set; }
+
+        // Backing field for intelligence level
         private int level;
-        public int IntelligenceLevel { get => level; set => level = value < 0 ? 0 : (value > 10 ? 10 : value); }
+
+        // Intelligence level (0–10)
+        public int IntelligenceLevel
+        {
+            get => level;
+            set => level = value < 0 ? 0 : (value > 10 ? 10 : value);
+        }
+
+        // Returns full string representation including raven-specific data
         public override string ToString()
         {
             return base.ToString() +
@@ -18,8 +26,5 @@ namespace EcoPark_Animal_Management_System.category.birds.species
                 $"  Beak Color: {BeakColor}{Environment.NewLine}" +
                 $"  Intelligence Level: {IntelligenceLevel}{Environment.NewLine}";
         }
-
-
-
     }
 }

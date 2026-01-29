@@ -6,25 +6,31 @@ using System.Windows.Forms;
 
 namespace EcoPark_Animal_Management_System
 {
+    // Popup form used to create a single animal with dynamic inputs
     public class AnimalInputForm : Form
     {
+        // The created animal returned to MainForm
         public Animal CreatedAnimal { get; private set; }
 
+        // Base animal inputs
         private TextBox txtName;
         private NumericUpDown numAge;
         private NumericUpDown numWeight;
         private ComboBox cmbGender;
 
+        // Category-level inputs
         private NumericUpDown numCat1;
         private NumericUpDown numCat2;
         private TextBox txtCat;
         private CheckBox chkCat;
 
+        // Species-level inputs
         private TextBox txtSpec;
         private NumericUpDown numSpec1;
         private NumericUpDown numSpec2;
         private CheckBox chkSpec;
 
+        // Selected category and species
         private readonly string category;
         private readonly string species;
 
@@ -35,6 +41,7 @@ namespace EcoPark_Animal_Management_System
             InitializeUI();
         }
 
+        // Builds the form dynamically based on category and species
         private void InitializeUI()
         {
             Text = species + " Details";
@@ -44,11 +51,13 @@ namespace EcoPark_Animal_Management_System
 
             int y = 20;
 
+            // Base animal data
             txtName = AddTextBox("Name", ref y);
             numAge = AddNumber("Age", 0, 100, ref y);
             numWeight = AddNumber("Weight", 1, 500, ref y);
             cmbGender = AddComboBox("Gender", Enum.GetNames(typeof(GenderType)), ref y);
 
+            // Category-specific inputs
             if (category == "Mammal")
             {
                 numCat1 = AddNumber("Number of teeth", 0, 100, ref y);
@@ -68,7 +77,7 @@ namespace EcoPark_Animal_Management_System
                 chkCat = AddCheckBox("Lives in water", ref y);
             }
 
-            // SPECIES
+            // Species-specific inputs
             if (species == "Dog")
             {
                 txtSpec = AddTextBox("Breed", ref y);
@@ -115,7 +124,13 @@ namespace EcoPark_Animal_Management_System
                 chkSpec = AddCheckBox("Is aquatic", ref y);
             }
 
-            Button ok = new Button { Text = "OK", Location = new Point(140, y + 10), Width = 80 };
+            // Confirm creation
+            Button ok = new Button
+            {
+                Text = "OK",
+                Location = new Point(140, y + 10),
+                Width = 80
+            };
             ok.Click += (s, e) =>
             {
                 CreatedAnimal = CreateAnimal();
@@ -125,6 +140,7 @@ namespace EcoPark_Animal_Management_System
             Controls.Add(ok);
         }
 
+        // Creates and populates the animal object
         private Animal CreateAnimal()
         {
             Animal animal = null;
@@ -141,11 +157,16 @@ namespace EcoPark_Animal_Management_System
 
             if (animal == null) return null;
 
+            // Base properties
             animal.Name = txtName.Text;
             animal.Age = (int)numAge.Value;
             animal.Weight = (double)numWeight.Value;
-            animal.Gender = (GenderType)Enum.Parse(typeof(GenderType), cmbGender.SelectedItem.ToString());
+            animal.Gender = (GenderType)Enum.Parse(
+                typeof(GenderType),
+                cmbGender.SelectedItem.ToString()
+            );
 
+            // Category properties
             if (animal is category.mammal.Mammal m)
             {
                 m.NumberOfTeeth = (int)numCat1.Value;
@@ -165,12 +186,12 @@ namespace EcoPark_Animal_Management_System
                 r.LivesInWater = chkCat.Checked;
             }
 
-            // species assignments omitted here for brevity – already validated above
+            // Species-specific assignments are handled above
 
             return animal;
         }
 
-        // HELPERS
+        // Helper to add a labeled textbox
         private TextBox AddTextBox(string label, ref int y)
         {
             Controls.Add(new Label { Text = label, Location = new Point(20, y) });
@@ -181,21 +202,34 @@ namespace EcoPark_Animal_Management_System
             return box;
         }
 
+        // Helper to add a labeled numeric input
         private NumericUpDown AddNumber(string label, int min, int max, ref int y)
         {
             Controls.Add(new Label { Text = label, Location = new Point(20, y) });
             y += 20;
-            var num = new NumericUpDown { Location = new Point(20, y), Minimum = min, Maximum = max, Width = 300 };
+            var num = new NumericUpDown
+            {
+                Location = new Point(20, y),
+                Minimum = min,
+                Maximum = max,
+                Width = 300
+            };
             Controls.Add(num);
             y += 30;
             return num;
         }
 
+        // Helper to add a labeled dropdown
         private ComboBox AddComboBox(string label, string[] items, ref int y)
         {
             Controls.Add(new Label { Text = label, Location = new Point(20, y) });
             y += 20;
-            var box = new ComboBox { Location = new Point(20, y), Width = 300, DropDownStyle = ComboBoxStyle.DropDownList };
+            var box = new ComboBox
+            {
+                Location = new Point(20, y),
+                Width = 300,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
             box.Items.AddRange(items);
             box.SelectedIndex = 0;
             Controls.Add(box);
@@ -203,9 +237,15 @@ namespace EcoPark_Animal_Management_System
             return box;
         }
 
+        // Helper to add a checkbox
         private CheckBox AddCheckBox(string label, ref int y)
         {
-            var chk = new CheckBox { Text = label, Location = new Point(20, y), AutoSize = true };
+            var chk = new CheckBox
+            {
+                Text = label,
+                Location = new Point(20, y),
+                AutoSize = true
+            };
             Controls.Add(chk);
             y += 30;
             return chk;

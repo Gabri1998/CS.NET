@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Globalization;
 
 namespace EcoPark_Animal_Management_System.utilities
 {
+    // Utility class for safely parsing numeric and boolean values
     internal static class NumericUtility
     {
-        // ---------- INTEGER ----------
-
+        // Tries to parse an integer from string
         public static (int value, bool success) TryParseInt(string input)
         {
             if (int.TryParse(input, out int result))
@@ -22,6 +17,7 @@ namespace EcoPark_Animal_Management_System.utilities
             return (0, false);
         }
 
+        // Tries to parse an integer within a specific range
         public static (int value, bool success) TryParseInt(string input, int min, int max)
         {
             if (int.TryParse(input, out int result))
@@ -35,8 +31,7 @@ namespace EcoPark_Animal_Management_System.utilities
             return (0, false);
         }
 
-        // ---------- DOUBLE ----------
-
+        // Tries to parse a double using invariant culture
         public static (double value, bool success) TryParseDouble(string input)
         {
             if (double.TryParse(
@@ -51,6 +46,7 @@ namespace EcoPark_Animal_Management_System.utilities
             return (0.0, false);
         }
 
+        // Tries to parse a double within a specific range
         public static (double value, bool success) TryParseDouble(string input, double min, double max)
         {
             if (double.TryParse(
@@ -68,8 +64,7 @@ namespace EcoPark_Animal_Management_System.utilities
             return (0.0, false);
         }
 
-        // ---------- BOOL ----------
-
+        // Tries to parse a boolean value
         public static (bool value, bool success) TryParseBool(string input)
         {
             if (bool.TryParse(input, out bool result))

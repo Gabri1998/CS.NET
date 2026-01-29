@@ -1,19 +1,28 @@
 ﻿using EcoPark_Animal_Management_System.animal_gen;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EcoPark_Animal_Management_System.category.reptiles
 {
+    // Base class for all reptile animals
     abstract class Reptile : Animal
     {
+        // Length of the reptile's body
         public double BodyLength { get; set; }
+
+        // Indicates whether the reptile lives in water
         public bool LivesInWater { get; set; }
-        public int AggressivenessLevel { get => level; set => level = value < 0 ? 0 : (value > 10 ? 10 : value); }
+
+        // Backing field for aggressiveness level
         private int level;
 
+        // Aggressiveness level (0–10)
+        public int AggressivenessLevel
+        {
+            get => level;
+            set => level = value < 0 ? 0 : (value > 10 ? 10 : value);
+        }
+
+        // Returns base animal info plus reptile-specific info
         public override string ToString()
         {
             return base.ToString() +
@@ -22,8 +31,5 @@ namespace EcoPark_Animal_Management_System.category.reptiles
                 $"  Lives In Water: {LivesInWater}{Environment.NewLine}" +
                 $"  Aggressiveness Level: {AggressivenessLevel}{Environment.NewLine}";
         }
-
-
-
     }
 }
