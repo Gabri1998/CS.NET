@@ -1,0 +1,275 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\animal-gen\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:animal-gen\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\birds\\species\\chicken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\birds\\species\\chicken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\birds\\species\\falcon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\birds\\species\\falcon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\birds\\species\\raven.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\birds\\species\\raven.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\birds\\bird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\birds\\bird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\mammals\\species\\cat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\mammals\\species\\cat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\mammals\\species\\cow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\mammals\\species\\cow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\mammals\\species\\dog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\mammals\\species\\dog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\mammals\\mammal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\mammals\\mammal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\reptiles\\species\\frog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\reptiles\\species\\frog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\reptiles\\species\\snake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\reptiles\\species\\snake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\reptiles\\species\\turtle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\reptiles\\species\\turtle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\category\\reptiles\\reptile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:category\\reptiles\\reptile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|c:\\users\\ibrah\\source\\repos\\ecopark animal management system\\animalinputform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86421145-E30A-4B4E-888B-0C1D1A4DADD5}|EcoPark Animal Management System.csproj|solutionrelative:animalinputform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Chicken.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Chicken.cs",
+              "RelativeDocumentMoniker": "category\\birds\\species\\Chicken.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Chicken.cs*",
+              "RelativeToolTip": "category\\birds\\species\\Chicken.cs*",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA4wBQAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:35:55.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Falcon.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Falcon.cs",
+              "RelativeDocumentMoniker": "category\\birds\\species\\Falcon.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Falcon.cs*",
+              "RelativeToolTip": "category\\birds\\species\\Falcon.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:35:32.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Raven.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Raven.cs",
+              "RelativeDocumentMoniker": "category\\birds\\species\\Raven.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\species\\Raven.cs*",
+              "RelativeToolTip": "category\\birds\\species\\Raven.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:35:11.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Bird.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\Bird.cs",
+              "RelativeDocumentMoniker": "category\\birds\\Bird.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\birds\\Bird.cs*",
+              "RelativeToolTip": "category\\birds\\Bird.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:34:47.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cat.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Cat.cs",
+              "RelativeDocumentMoniker": "category\\mammals\\species\\Cat.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Cat.cs*",
+              "RelativeToolTip": "category\\mammals\\species\\Cat.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:34:18.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Cow.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Cow.cs",
+              "RelativeDocumentMoniker": "category\\mammals\\species\\Cow.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Cow.cs*",
+              "RelativeToolTip": "category\\mammals\\species\\Cow.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:33:58.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Dog.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Dog.cs",
+              "RelativeDocumentMoniker": "category\\mammals\\species\\Dog.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\species\\Dog.cs*",
+              "RelativeToolTip": "category\\mammals\\species\\Dog.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:33:34.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Mammal.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\Mammal.cs",
+              "RelativeDocumentMoniker": "category\\mammals\\Mammal.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\mammals\\Mammal.cs*",
+              "RelativeToolTip": "category\\mammals\\Mammal.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:32:46.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Turtle.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Turtle.cs",
+              "RelativeDocumentMoniker": "category\\reptiles\\species\\Turtle.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Turtle.cs*",
+              "RelativeToolTip": "category\\reptiles\\species\\Turtle.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:32:22.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Animal.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\animal-gen\\Animal.cs",
+              "RelativeDocumentMoniker": "animal-gen\\Animal.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\animal-gen\\Animal.cs*",
+              "RelativeToolTip": "animal-gen\\Animal.cs*",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAACoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:23:36.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Reptile.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\Reptile.cs",
+              "RelativeDocumentMoniker": "category\\reptiles\\Reptile.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\Reptile.cs",
+              "RelativeToolTip": "category\\reptiles\\Reptile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:23:17.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Snake.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Snake.cs",
+              "RelativeDocumentMoniker": "category\\reptiles\\species\\Snake.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Snake.cs",
+              "RelativeToolTip": "category\\reptiles\\species\\Snake.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:23:13.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Frog.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Frog.cs",
+              "RelativeDocumentMoniker": "category\\reptiles\\species\\Frog.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\category\\reptiles\\species\\Frog.cs*",
+              "RelativeToolTip": "category\\reptiles\\species\\Frog.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:21:01.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AnimalInputForm.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\AnimalInputForm.cs",
+              "RelativeDocumentMoniker": "AnimalInputForm.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\AnimalInputForm.cs",
+              "RelativeToolTip": "AnimalInputForm.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAAA1wNYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:00:09.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\MainForm.cs",
+              "RelativeDocumentMoniker": "MainForm.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\EcoPark Animal Management System\\MainForm.cs",
+              "RelativeToolTip": "MainForm.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAA7wFAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T14:00:03.129Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

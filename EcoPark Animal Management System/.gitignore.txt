@@ -1,0 +1,84 @@
+##############################
+# Build results
+##############################
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.vs/
+
+##############################
+# Visual Studio files
+##############################
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+##############################
+# Rider / ReSharper
+##############################
+.idea/
+_ReSharper*/
+*.DotSettings.user
+
+##############################
+# OS generated files
+##############################
+[Dd]esktop.ini
+Thumbs.db
+ehthumbs.db
+Icon?
+*.DS_Store
+
+##############################
+# Debug / Release folders
+##############################
+[Dd]ebug*/
+[Rr]elease*/
+
+##############################
+# NuGet
+##############################
+*.nupkg
+packages/
+.nuget/
+.nuget/packages/
+
+##############################
+# Test results
+##############################
+TestResults/
+*.trx
+
+##############################
+# Logs
+##############################
+*.log
+
+##############################
+# Temporary files
+##############################
+*.tmp
+*.temp
+*.bak
+*.swp
+
+##############################
+# Publish output
+##############################
+publish/
+
+##############################
+# WinForms designer backup files
+##############################
+*.resx.bak
+
+##############################
+# User-specific VS Code
+##############################
+.vscode/

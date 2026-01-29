@@ -1,0 +1,11 @@
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\bin\Debug\EcoPark Animal Management System.exe.config
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\bin\Debug\EcoPark Animal Management System.exe
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\bin\Debug\EcoPark Animal Management System.pdb
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark_Animal_Management_System.AboutForm.resources
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark_Animal_Management_System.Properties.Resources.resources
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.csproj.GenerateResource.cache
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.exe
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.pdb
+C:\Users\ibrah\source\repos\EcoPark Animal Management System\obj\Debug\EcoPark Animal Management System.exe.config

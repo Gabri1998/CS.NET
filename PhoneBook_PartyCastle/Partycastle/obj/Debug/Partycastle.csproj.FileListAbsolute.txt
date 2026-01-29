@@ -1,0 +1,10 @@
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.Properties.Resources.resources
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.csproj.GenerateResource.cache
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\Partycastle\bin\Debug\Partycastle.exe.config
+C:\Users\ibrah\source\repos\Partycastle\bin\Debug\Partycastle.exe
+C:\Users\ibrah\source\repos\Partycastle\bin\Debug\Partycastle.pdb
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.exe
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.pdb
+C:\Users\ibrah\source\repos\Partycastle\obj\Debug\Partycastle.Form1.resources
