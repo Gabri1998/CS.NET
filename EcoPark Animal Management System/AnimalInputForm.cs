@@ -212,7 +212,8 @@ namespace EcoPark_Animal_Management_System
                 Location = new Point(20, y),
                 Minimum = min,
                 Maximum = max,
-                Width = 300
+                Width = 300,
+                ReadOnly = true  // Add this line to prevent manual text entry
             };
             Controls.Add(num);
             y += 30;

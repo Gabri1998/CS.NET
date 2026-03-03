@@ -172,6 +172,7 @@ namespace EcoPark_Animal_Management_System
             Controls.Add(btnLoadImage);
 
             UpdateSpecies();
+            lstAnimals.SelectedIndexChanged += lstAnimals_SelectedIndexChanged;
         }
 
         // Updates species list based on selected category
@@ -227,11 +228,40 @@ namespace EcoPark_Animal_Management_System
         private void RefreshList()
         {
             lstAnimals.Visible = chkListAll.Checked;
+
+            // Disable category controls when listing all animals
+            bool listMode = chkListAll.Checked;
+            rbMammal.Enabled = !listMode;
+            rbBird.Enabled = !listMode;
+            rbReptile.Enabled = !listMode;
+            cmbSpecies.Enabled = !listMode;
+            btnCreate.Enabled = !listMode;
+
             if (!chkListAll.Checked) return;
 
             lstAnimals.DataSource = null;
             lstAnimals.DataSource = animals;
             lstAnimals.DisplayMember = "DisplayName";
         }
+
+        private void lstAnimals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstAnimals.SelectedItem is Animal a)
+            {
+                txtOutput.Text = a.ToString();
+                picAnimal.ImageLocation = a.ImagePath;
+
+                // Highlight the category of the selected animal
+                string animalType = a.GetType().Namespace;
+                if (animalType.Contains("mammal"))
+                    rbMammal.Checked = true;
+                else if (animalType.Contains("birds"))
+                    rbBird.Checked = true;
+                else if (animalType.Contains("reptiles"))
+                    rbReptile.Checked = true;
+            }
+        }
+
+
     }
 }

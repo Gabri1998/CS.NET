@@ -1,0 +1,30 @@
+## Visual Studio Build Artifacts
+# Ignores all bin and obj folders in any subproject
+**/[Bb]in/
+**/[Oo]bj/
+
+## Visual Studio Metadata
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Copilot & Indexing (The files causing your specific error)
+*.db
+*.db-shm
+*.db-wal
+*.vsidx
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## User-specific Project files
+*.sqlproj.user
+*.csproj.user
+*.vbproj.user
+*.reshelp
+
+## Others
+[Nn]ew [Ff]older/

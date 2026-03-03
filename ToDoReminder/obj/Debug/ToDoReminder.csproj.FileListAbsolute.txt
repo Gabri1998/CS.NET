@@ -1,9 +1,0 @@
-C:\Users\ibrah\source\repos\ToDoReminder\bin\Debug\ToDoReminder.exe.config
-C:\Users\ibrah\source\repos\ToDoReminder\bin\Debug\ToDoReminder.exe
-C:\Users\ibrah\source\repos\ToDoReminder\bin\Debug\ToDoReminder.pdb
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.csproj.AssemblyReference.cache
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.Properties.Resources.resources
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.csproj.GenerateResource.cache
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.csproj.CoreCompileInputs.cache
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.exe
-C:\Users\ibrah\source\repos\ToDoReminder\obj\Debug\ToDoReminder.pdb
