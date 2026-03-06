@@ -1,6 +1,7 @@
 ﻿using EcoPark_Animal_Management_System.animal_gen;
 using EcoPark_Animal_Management_System.enums;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -145,6 +146,7 @@ namespace EcoPark_Animal_Management_System
         {
             Animal animal = null;
 
+            // Create specific animal type based on species
             if (species == "Dog") animal = new category.mammal.species.Dog();
             else if (species == "Cat") animal = new category.mammal.species.Cat();
             else if (species == "Cow") animal = new category.mammal.species.Cow();
@@ -166,6 +168,9 @@ namespace EcoPark_Animal_Management_System
                 cmbGender.SelectedItem.ToString()
             );
 
+            // Call SetSleepTime to initialize sleep time based on species
+            animal.SetSleepTime();
+
             // Category properties
             if (animal is category.mammal.Mammal m)
             {
@@ -186,7 +191,52 @@ namespace EcoPark_Animal_Management_System
                 r.LivesInWater = chkCat.Checked;
             }
 
-            // Species-specific assignments are handled above
+            // Species-specific properties
+            if (animal is category.mammal.species.Dog dog)
+            {
+                dog.Breed = txtSpec.Text;
+                dog.IsTrained = chkSpec.Checked;
+                dog.LoyaltyLevel = (int)numSpec1.Value;
+            }
+            else if (animal is category.mammal.species.Cat cat)
+            {
+                cat.FurColor = txtSpec.Text;
+                cat.IsIndoor = chkSpec.Checked;
+            }
+            else if (animal is category.mammal.species.Cow cow)
+            {
+                cow.MilkProductionPerDay = (double)numSpec1.Value;
+            }
+            else if (animal is category.birds.species.Chicken chicken)
+            {
+                chicken.IsDomestic = chkSpec.Checked;
+                chicken.EggsPerWeek = (int)numSpec1.Value;
+            }
+            else if (animal is category.birds.species.Falcon falcon)
+            {
+                falcon.FlyingSpeed = (float)numSpec1.Value;
+                falcon.HuntingAccuracy = (int)numSpec2.Value;
+            }
+            else if (animal is category.birds.species.Raven raven)
+            {
+                raven.BeakColor = txtSpec.Text;
+                raven.IntelligenceLevel = (int)numSpec1.Value;
+            }
+            else if (animal is category.reptiles.species.Frog frog)
+            {
+                frog.JumpHeight = (double)numSpec1.Value;
+                frog.CanLiveOnLand = chkSpec.Checked;
+            }
+            else if (animal is category.reptiles.species.Snake snake)
+            {
+                snake.IsVenomous = chkSpec.Checked;
+                snake.BiteRange = (double)numSpec1.Value;
+            }
+            else if (animal is category.reptiles.species.Turtle turtle)
+            {
+                turtle.ShellWidth = (int)numSpec1.Value;
+                turtle.IsAquatic = chkSpec.Checked;
+            }
 
             return animal;
         }
@@ -213,7 +263,7 @@ namespace EcoPark_Animal_Management_System
                 Minimum = min,
                 Maximum = max,
                 Width = 300,
-                ReadOnly = true  // Add this line to prevent manual text entry
+                ReadOnly = true
             };
             Controls.Add(num);
             y += 30;

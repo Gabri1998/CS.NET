@@ -10,8 +10,9 @@ namespace EcoPark_Animal_Management_System
     // Main application window
     public partial class MainForm : Form
     {
-        // Stores all created animals during runtime
-        private List<Animal> animals = new List<Animal>();
+        // Stores all created animals during runtime using AnimalManager
+        private AnimalManager animalManager = new AnimalManager();
+        private Animal currAnimal = null;           // Temporary working animal
 
         // UI controls
         private CheckBox chkListAll;
@@ -30,6 +31,7 @@ namespace EcoPark_Animal_Management_System
         // Action buttons
         private Button btnCreate;
         private Button btnLoadImage;
+        private Button btnDelete;
 
         public MainForm()
         {
@@ -63,14 +65,7 @@ namespace EcoPark_Animal_Management_System
                 Size = new Size(460, 120),
                 Visible = false
             };
-            lstAnimals.SelectedIndexChanged += (s, e) =>
-            {
-                if (lstAnimals.SelectedItem is Animal a)
-                {
-                    txtOutput.Text = a.ToString();
-                    picAnimal.ImageLocation = a.ImagePath;
-                }
-            };
+            lstAnimals.SelectedIndexChanged += lstAnimals_SelectedIndexChanged;
             Controls.Add(lstAnimals);
 
             y += 130;
@@ -151,6 +146,16 @@ namespace EcoPark_Animal_Management_System
             btnCreate.Click += BtnCreate_Click;
             Controls.Add(btnCreate);
 
+            // Delete animal button
+            btnDelete = new Button
+            {
+                Text = "Delete Animal",
+                Location = new Point(xRight, 60),
+                Size = new Size(150, 30)
+            };
+            btnDelete.Click += BtnDelete_Click;
+            Controls.Add(btnDelete);
+
             // Image preview
             picAnimal = new PictureBox
             {
@@ -172,7 +177,6 @@ namespace EcoPark_Animal_Management_System
             Controls.Add(btnLoadImage);
 
             UpdateSpecies();
-            lstAnimals.SelectedIndexChanged += lstAnimals_SelectedIndexChanged;
         }
 
         // Updates species list based on selected category
@@ -191,7 +195,7 @@ namespace EcoPark_Animal_Management_System
                 cmbSpecies.SelectedIndex = 0;
         }
 
-        // Opens input form and creates a new animal
+        // Opens input form and creates a new animal using AddWithUniqueId
         private void BtnCreate_Click(object sender, EventArgs e)
         {
             if (cmbSpecies.SelectedItem == null) return;
@@ -204,22 +208,36 @@ namespace EcoPark_Animal_Management_System
             {
                 if (dlg.ShowDialog(this) == DialogResult.OK && dlg.CreatedAnimal != null)
                 {
-                    animals.Add(dlg.CreatedAnimal);
+                    currAnimal = dlg.CreatedAnimal;
+                    animalManager.AddWithUniqueId(currAnimal);  // Uses ID generation
+                    currAnimal = null;
                     txtOutput.Text = dlg.CreatedAnimal.ToString();
                     RefreshList();
                 }
             }
         }
 
+        // Deletes the selected animal from the list
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (lstAnimals.SelectedIndex >= 0)
+            {
+                animalManager.Remove(lstAnimals.SelectedIndex);
+                RefreshList();
+                txtOutput.Text = "";
+                picAnimal.Image = null;
+            }
+        }
+
         // Loads an image for the last created animal
         private void BtnLoadImage_Click(object sender, EventArgs e)
         {
-            if (animals.Count == 0) return;
+            if (animalManager.Count == 0) return;
 
             OpenFileDialog dlg = new OpenFileDialog { Filter = "Images|*.jpg;*.png;*.bmp" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                animals.Last().ImagePath = dlg.FileName;
+                animalManager.GetAt(animalManager.Count - 1).ImagePath = dlg.FileName;
                 picAnimal.ImageLocation = dlg.FileName;
             }
         }
@@ -236,32 +254,36 @@ namespace EcoPark_Animal_Management_System
             rbReptile.Enabled = !listMode;
             cmbSpecies.Enabled = !listMode;
             btnCreate.Enabled = !listMode;
+            btnDelete.Enabled = !listMode;
 
             if (!chkListAll.Checked) return;
 
             lstAnimals.DataSource = null;
-            lstAnimals.DataSource = animals;
-            lstAnimals.DisplayMember = "DisplayName";
+            lstAnimals.DataSource = animalManager.ToStringSummaryAllAnimals();
         }
 
+        // Handles animal selection in the list and displays full details
         private void lstAnimals_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstAnimals.SelectedItem is Animal a)
+            if (lstAnimals.SelectedIndex >= 0)
             {
-                txtOutput.Text = a.ToString();
-                picAnimal.ImageLocation = a.ImagePath;
+                Animal selected = animalManager.GetAt(lstAnimals.SelectedIndex);
 
-                // Highlight the category of the selected animal
-                string animalType = a.GetType().Namespace;
-                if (animalType.Contains("mammal"))
-                    rbMammal.Checked = true;
-                else if (animalType.Contains("birds"))
-                    rbBird.Checked = true;
-                else if (animalType.Contains("reptiles"))
-                    rbReptile.Checked = true;
+                if (selected != null)
+                {
+                    txtOutput.Text = selected.ToString();
+                    picAnimal.ImageLocation = selected.ImagePath;
+
+                    // Highlight the category of the selected animal
+                    string animalType = selected.GetType().Namespace;
+                    if (animalType.Contains("mammal") || animalType.Contains("mammals"))
+                        rbMammal.Checked = true;
+                    else if (animalType.Contains("birds"))
+                        rbBird.Checked = true;
+                    else if (animalType.Contains("reptiles"))
+                        rbReptile.Checked = true;
+                }
             }
         }
-
-
     }
 }
