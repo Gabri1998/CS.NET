@@ -1,8 +1,6 @@
 ﻿using EcoPark_Animal_Management_System.animal_gen;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace EcoPark_Animal_Management_System
@@ -33,6 +31,7 @@ namespace EcoPark_Animal_Management_System
         private Button btnLoadImage;
         private Button btnDelete;
 
+        // Constructor initializes form
         public MainForm()
         {
             InitializeComponent();
@@ -209,9 +208,13 @@ namespace EcoPark_Animal_Management_System
                 if (dlg.ShowDialog(this) == DialogResult.OK && dlg.CreatedAnimal != null)
                 {
                     currAnimal = dlg.CreatedAnimal;
-                    animalManager.AddWithUniqueId(currAnimal);  // Uses ID generation
+
+                    animalManager.AddWithUniqueId(currAnimal);
+
                     currAnimal = null;
+
                     txtOutput.Text = dlg.CreatedAnimal.ToString();
+
                     RefreshList();
                 }
             }
@@ -223,7 +226,9 @@ namespace EcoPark_Animal_Management_System
             if (lstAnimals.SelectedIndex >= 0)
             {
                 animalManager.Remove(lstAnimals.SelectedIndex);
+
                 RefreshList();
+
                 txtOutput.Text = "";
                 picAnimal.Image = null;
             }
@@ -234,10 +239,15 @@ namespace EcoPark_Animal_Management_System
         {
             if (animalManager.Count == 0) return;
 
-            OpenFileDialog dlg = new OpenFileDialog { Filter = "Images|*.jpg;*.png;*.bmp" };
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                Filter = "Images|*.jpg;*.png;*.bmp"
+            };
+
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 animalManager.GetAt(animalManager.Count - 1).ImagePath = dlg.FileName;
+
                 picAnimal.ImageLocation = dlg.FileName;
             }
         }
@@ -247,18 +257,22 @@ namespace EcoPark_Animal_Management_System
         {
             lstAnimals.Visible = chkListAll.Checked;
 
-            // Disable category controls when listing all animals
             bool listMode = chkListAll.Checked;
+
             rbMammal.Enabled = !listMode;
             rbBird.Enabled = !listMode;
             rbReptile.Enabled = !listMode;
             cmbSpecies.Enabled = !listMode;
+
             btnCreate.Enabled = !listMode;
-            btnDelete.Enabled = !listMode;
+
+            // FIX: Delete must stay enabled when listing animals
+            btnDelete.Enabled = listMode;
 
             if (!chkListAll.Checked) return;
 
             lstAnimals.DataSource = null;
+
             lstAnimals.DataSource = animalManager.ToStringSummaryAllAnimals();
         }
 
@@ -272,11 +286,12 @@ namespace EcoPark_Animal_Management_System
                 if (selected != null)
                 {
                     txtOutput.Text = selected.ToString();
+
                     picAnimal.ImageLocation = selected.ImagePath;
 
-                    // Highlight the category of the selected animal
                     string animalType = selected.GetType().Namespace;
-                    if (animalType.Contains("mammal") || animalType.Contains("mammals"))
+
+                    if (animalType.Contains("mammal"))
                         rbMammal.Checked = true;
                     else if (animalType.Contains("birds"))
                         rbBird.Checked = true;
