@@ -1,11 +1,25 @@
-﻿using EcoPark_Animal_Management_System.enums;
+﻿using EcoPark_Animal_Management_System.category.birds.species;
+using EcoPark_Animal_Management_System.category.mammal.species;
+using EcoPark_Animal_Management_System.category.reptiles.species;
+using EcoPark_Animal_Management_System.enums;
 using System;
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 namespace EcoPark_Animal_Management_System.animal_gen
 {
+
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Dog), "dog")]
+    [JsonDerivedType(typeof(Cat), "cat")]
+    [JsonDerivedType(typeof(Cow), "cow")]
+    [JsonDerivedType(typeof(Falcon), "falcon")]
+    [JsonDerivedType(typeof(Chicken), "chicken")]
+    [JsonDerivedType(typeof(Raven), "raven")]
+    [JsonDerivedType(typeof(Frog), "frog")]
+    [JsonDerivedType(typeof(Snake), "snake")]
+    [JsonDerivedType(typeof(Turtle), "turtle")]
     // Base abstract class for all animals in the system
-    public abstract class Animal : IAnimal
+    public  class Animal : IAnimal
     {
         // Static counter used to generate unique IDs
         private static int idCounter = 1;
@@ -22,7 +36,7 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Backing field for age
         private int age;
 
-        // Animal age (cannot be negative)
+        // Animal age cannot be negative
         public int Age
         {
             get => age;
@@ -32,7 +46,7 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Backing field for weight
         private double weight;
 
-        // Animal weight (must be greater than zero)
+        // Animal weight must be greater than zero
         public double Weight
         {
             get => weight;
@@ -42,46 +56,60 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Animal gender
         public GenderType Gender { get; set; }
 
-        // Backing field for sleep time (Grade C)
+        // Backing field for sleep time 
         protected double sleepTime;
 
-        // Sleep time property (Grade C)
+        // Sleep time property 
         public double SleepTime
         {
             get => sleepTime;
         }
 
-        // Constructor assigns a unique ID automatically
-        protected Animal()
+        // Constructor just in case assigns a unique ID automatically
+        public Animal()
         {
-            Id = "AN-" + idCounter.ToString("D3");
-            idCounter++;
+            if (string.IsNullOrEmpty(Id))
+            {
+                Id = "AN-" + idCounter.ToString("D3");
+                idCounter++;
+            }
         }
 
         // Used for displaying animal type in lists
-        public string DisplayName => GetType().Name;
+        public string DisplayName => ToStringSummary();
 
-        // Returns summary for list display (Grade D)
+        // Returns summary for list display 
         public virtual string ToStringSummary()
         {
-            string shortName = Name.Length > 12 ? Name.Substring(0, 12) : Name;
-            return $"{Id,-8} {shortName,-12} {Age,6} {Weight,6:F1} {Gender}";
+            string type = GetType().Name;
+
+            string shortName = string.IsNullOrEmpty(Name)
+                ? ""
+                : (Name.Length > 12 ? Name.Substring(0, 12) : Name);
+
+            return $"{type,-10} {Id,-6} {shortName,-12} {Age,4} {Gender}";
         }
 
-        // Sets sleep time (Grade C)
+        // Sets sleep time 
         public virtual void SetSleepTime()
         {
             sleepTime = 0;
         }
 
-        // Returns average lifespan (Grade C)
-        public abstract int GetAverageLifeSpan();
+        // Returns average lifespan 
+        public virtual int GetAverageLifeSpan()
+        {
+            return 0;
+        }
 
-        // Returns daily food requirements (Grade B)
-        public abstract Dictionary<string, string> DailyFoodRequirement();
+        // Returns daily food requirements 
+        public virtual Dictionary<string, string> DailyFoodRequirement()
+        {
+           return new Dictionary<string, string>();
+        }
 
-        // Returns upcoming events (Grade A)
-        public abstract Queue<string> GetUpcomingEvents();
+        // Returns upcoming events 
+        public virtual Queue<string> GetUpcomingEvents() {  return new Queue<string>(); }
 
         // Returns formatted animal information
         public override string ToString()
@@ -98,14 +126,14 @@ namespace EcoPark_Animal_Management_System.animal_gen
             result += $"  Avg Lifespan: {GetAverageLifeSpan()} years{Environment.NewLine}";
 
             result += "\r\nDaily Food Requirements:\r\n";
-            Dictionary<string, string> food = DailyFoodRequirement();
+            var food = DailyFoodRequirement() ?? new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> meal in food)
             {
                 result += $"  {meal.Key}: {meal.Value}{Environment.NewLine}";
             }
 
             result += "\r\nUpcoming Events:\r\n";
-            Queue<string> events = GetUpcomingEvents();
+            var events = GetUpcomingEvents() ?? new Queue<string>();
             string[] eventArray = events.ToArray();
             foreach (string e in eventArray)
             {

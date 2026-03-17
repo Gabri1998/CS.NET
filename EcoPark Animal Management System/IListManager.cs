@@ -3,7 +3,7 @@
 namespace EcoPark_Animal_Management_System
 {
     // Generic interface for managing a collection of objects
-    internal interface IListManager<T>
+     interface IListManager<T>
     {
         int Count { get; }                     // Gets number of items
         bool Add(T item);                       // Adds an item to the list
@@ -12,6 +12,9 @@ namespace EcoPark_Animal_Management_System
         bool ReplaceAt(int index, T item);       // Replaces item at index
         bool CheckIndex(int index);              // Checks if index is valid
         T GetAt(int index);                      // Returns item at index
+        void JsonSerialize(string file);
+        void JsonDeserialize(string file);
+        void XMLSerialize(string file);
         string[] ToStringArray();                 // Returns all items as strings
     }
 }

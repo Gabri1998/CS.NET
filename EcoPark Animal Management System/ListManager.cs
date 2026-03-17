@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Xml.Serialization;
 
 namespace EcoPark_Animal_Management_System
 {
@@ -20,6 +23,43 @@ namespace EcoPark_Animal_Management_System
             if (item == null) return false;
             items.Add(item);
             return true;
+        }
+
+        public void JsonSerialize(string file)    // Saves list to JSON file
+        {
+            var options = new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+                PropertyNameCaseInsensitive = true,
+                IncludeFields = false
+            };
+
+            string jsonString = JsonSerializer.Serialize(items, options);
+            File.WriteAllText(file, jsonString);
+        }
+
+        public void JsonDeserialize(string file)  // Loads list from JSON file
+        {
+            string jsonString = File.ReadAllText(file);
+
+            var options = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            List<T> loadedItems = JsonSerializer.Deserialize<List<T>>(jsonString, options);
+
+            if (loadedItems != null)
+                items = new List<T>(loadedItems);
+        }
+
+        public void XMLSerialize(string file)     // Saves list to XML file
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
+            using (FileStream stream = new FileStream(file, FileMode.Create))
+            {
+                serializer.Serialize(stream, items);
+            }
         }
 
         public virtual bool AddWithUniqueId(T item)  // Base version - no ID
@@ -52,6 +92,11 @@ namespace EcoPark_Animal_Management_System
             if (CheckIndex(index))
                 return items[index];
             return default(T);
+        }
+
+        public List<T> GetAll()                    // Returns copy of all items
+        {
+            return new List<T>(items);
         }
 
         public string[] ToStringArray()            // Converts all to strings
