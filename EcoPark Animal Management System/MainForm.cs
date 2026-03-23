@@ -35,6 +35,7 @@ namespace EcoPark_Animal_Management_System
         private Button btnCreate;
         private Button btnLoadImage;
         private Button btnDelete;
+        private Button btnChange;
 
         // MenuStrip
         private MenuStrip menuStrip;
@@ -75,7 +76,7 @@ namespace EcoPark_Animal_Management_System
             int xRight = 520;
             int y = 20;
 
-            // Create menu bar
+            // ===== MENU =====
             menuStrip = new MenuStrip();
             menuStrip.Dock = DockStyle.Top;
             MainMenuStrip = menuStrip;
@@ -95,9 +96,7 @@ namespace EcoPark_Animal_Management_System
 
             sortMenu.DropDownItems.Add(sortNameItem);
             sortMenu.DropDownItems.Add(sortAgeItem);
-
             filterMenu.DropDownItems.Add(mammalsItem);
-
             statsMenu.DropDownItems.Add(avgAgeItem);
 
             // File menu
@@ -125,13 +124,9 @@ namespace EcoPark_Animal_Management_System
             menuStrip.Items.Add(statsMenu);
             menuStrip.Items.Add(helpMenu);
 
-            // About dialog
-            aboutMenu.Click += (s, e) =>
-            {
-                new AboutForm().ShowDialog();
-            };
+            Controls.Add(menuStrip);
 
-            // Menu actions
+            // Events
             sortNameItem.Click += SortName_Click;
             sortAgeItem.Click += SortAge_Click;
             mammalsItem.Click += MammalsOnly_Click;
@@ -142,39 +137,35 @@ namespace EcoPark_Animal_Management_System
             saveItem.Click += Save_Click;
             saveAsItem.Click += SaveAs_Click;
 
-            Controls.Add(menuStrip);
+            aboutMenu.Click += (s, e) => new AboutForm().ShowDialog();
+
             y += menuStrip.Height + 10;
 
-            // Toggle list mode
+            // ===== LEFT SIDE =====
+
             chkListAll = new CheckBox
             {
                 Text = "List all animals",
                 Location = new Point(xLeft, y),
                 AutoSize = true
             };
-
             chkListAll.CheckedChanged += (s, e) => RefreshList();
             Controls.Add(chkListAll);
 
             y += 30;
 
-            // Animal list display
             lstAnimals = new ListBox
             {
                 Location = new Point(xLeft, y),
                 Size = new Size(460, 120),
-                Visible = false
+                Visible = false,
+                Font = new Font("Consolas", 10)
             };
-
-            // Monospaced font for aligned columns
-            lstAnimals.Font = new Font("Consolas", 10);
-
             lstAnimals.SelectedIndexChanged += lstAnimals_SelectedIndexChanged;
             Controls.Add(lstAnimals);
 
             y += 130;
 
-            // Output box for detailed animal information
             txtOutput = new TextBox
             {
                 Location = new Point(xLeft, y),
@@ -183,89 +174,87 @@ namespace EcoPark_Animal_Management_System
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical
             };
-
             Controls.Add(txtOutput);
 
             y += 140;
 
-            // Category selection group
             GroupBox grpCategory = new GroupBox
             {
                 Text = "Category",
                 Location = new Point(xLeft, y),
-                Size = new Size(260, 60)
+                Size = new Size(320, 60)
             };
-
             Controls.Add(grpCategory);
 
+            // Flow layout panel (handles spacing automatically)
+            FlowLayoutPanel panel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false,
+                Padding = new Padding(10, 20, 0, 0)
+            };
+
+            // Radio buttons (NO Location here!)
             rbMammal = new RadioButton
             {
                 Text = "Mammal",
-                Location = new Point(10, 25),
                 AutoSize = true,
-                Checked = true
+                Checked = true,
+                Margin = new Padding(10, 0, 10, 0)
             };
 
             rbBird = new RadioButton
             {
                 Text = "Bird",
-                Location = new Point(90, 25),
-                AutoSize = true
+                AutoSize = true,
+                Margin = new Padding(10, 0, 10, 0)
             };
 
             rbReptile = new RadioButton
             {
                 Text = "Reptile",
-                Location = new Point(150, 25),
-                AutoSize = true
+                AutoSize = true,
+                Margin = new Padding(10, 0, 10, 0)
             };
 
-            // Update species when category changes
+            // Events (same as before)
             rbMammal.CheckedChanged += (s, e) => UpdateSpecies();
             rbBird.CheckedChanged += (s, e) => UpdateSpecies();
             rbReptile.CheckedChanged += (s, e) => UpdateSpecies();
 
-            grpCategory.Controls.Add(rbMammal);
-            grpCategory.Controls.Add(rbBird);
-            grpCategory.Controls.Add(rbReptile);
+            // Add radio buttons to panel
+            panel.Controls.Add(rbMammal);
+            panel.Controls.Add(rbBird);
+            panel.Controls.Add(rbReptile);
+
+            // Add panel to group
+            grpCategory.Controls.Add(panel);
 
             y += grpCategory.Height + 10;
 
-            // Species dropdown
+            // Species dropdown (unchanged)
             cmbSpecies = new ComboBox
             {
                 Location = new Point(xLeft, y),
                 Width = 200,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-
             Controls.Add(cmbSpecies);
 
-            y += 40;
+            // ===== RIGHT SIDE =====
 
-            // Create animal button
+            // Create
             btnCreate = new Button
             {
                 Text = "Create Animal",
                 Location = new Point(xRight, 20),
                 Size = new Size(150, 30)
             };
-
             btnCreate.Click += BtnCreate_Click;
             Controls.Add(btnCreate);
 
-            // Delete animal button
-            btnDelete = new Button
-            {
-                Text = "Delete Animal",
-                Location = new Point(xRight, 60),
-                Size = new Size(150, 30)
-            };
-
-            btnDelete.Click += BtnDelete_Click;
-            Controls.Add(btnDelete);
-
-            // Image preview box
+            // Image
             picAnimal = new PictureBox
             {
                 Location = new Point(xRight, 70),
@@ -273,20 +262,40 @@ namespace EcoPark_Animal_Management_System
                 BorderStyle = BorderStyle.FixedSingle,
                 SizeMode = PictureBoxSizeMode.Zoom
             };
-
             Controls.Add(picAnimal);
 
-            // Load image button
+            // Load image
             btnLoadImage = new Button
             {
                 Text = "Load Image",
                 Location = new Point(xRight, 280),
                 Size = new Size(150, 30)
             };
-
             btnLoadImage.Click += BtnLoadImage_Click;
             Controls.Add(btnLoadImage);
 
+            // Bottom buttons
+            int bottomY = 330;
+
+            btnChange = new Button
+            {
+                Text = "Change Animal",
+                Location = new Point(xRight, bottomY),
+                Size = new Size(150, 30)
+            };
+            btnChange.Click += BtnChange_Click;
+            Controls.Add(btnChange);
+
+            btnDelete = new Button
+            {
+                Text = "Delete Animal",
+                Location = new Point(xRight, bottomY + 40),
+                Size = new Size(150, 30)
+            };
+            btnDelete.Click += BtnDelete_Click;
+            Controls.Add(btnDelete);
+
+            // Init species
             UpdateSpecies();
         }
 
@@ -540,6 +549,28 @@ namespace EcoPark_Animal_Management_System
                 picAnimal.Image = null;
             }
         }
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            if (lstAnimals.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select an animal first.");
+                return;
+            }
+
+            Animal selected = animalManager.GetAt(lstAnimals.SelectedIndex);
+
+            using (var dlg = new AnimalInputForm(selected))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    // Object already updated (same reference)
+                    RefreshList();
+
+                    txtOutput.Text = selected.ToString();
+                    picAnimal.ImageLocation = selected.ImagePath;
+                }
+            }
+        }
 
         // Loads an image for the last created animal
         private void BtnLoadImage_Click(object sender, EventArgs e)
@@ -573,7 +604,7 @@ namespace EcoPark_Animal_Management_System
             btnCreate.Enabled = !listMode;
             btnDelete.Enabled = listMode;
 
-            if (!chkListAll.Checked) return;
+            if (!listMode) return;
 
             lstAnimals.DataSource = null;
 
@@ -599,6 +630,9 @@ namespace EcoPark_Animal_Management_System
             lstAnimals.DisplayMember = "DisplayName";
             lstAnimals.ClearSelected();
 
+            //  AFTER binding + clearing
+            btnChange.Enabled = false;
+
             Text = $"EcoPark Animal Manager  |  Animals: {animalManager.Count}";
         }
 
@@ -606,7 +640,12 @@ namespace EcoPark_Animal_Management_System
         private void lstAnimals_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstAnimals.SelectedItem == null)
+            {
+                btnChange.Enabled = false;
                 return;
+            }
+
+            btnChange.Enabled = true;
 
             Animal selected = (Animal)lstAnimals.SelectedItem;
 
