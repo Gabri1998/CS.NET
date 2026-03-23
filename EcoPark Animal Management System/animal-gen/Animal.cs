@@ -22,7 +22,7 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Backing field for age
         private int age;
 
-        // Animal age (cannot be negative)
+        // Animal age cannot be negative
         public int Age
         {
             get => age;
@@ -32,7 +32,7 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Backing field for weight
         private double weight;
 
-        // Animal weight (must be greater than zero)
+        // Animal weight must be greater than zero
         public double Weight
         {
             get => weight;
@@ -42,10 +42,10 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Animal gender
         public GenderType Gender { get; set; }
 
-        // Backing field for sleep time (Grade C)
+        // Backing field for sleep time 
         protected double sleepTime;
 
-        // Sleep time property (Grade C)
+        // Sleep time property
         public double SleepTime
         {
             get => sleepTime;
@@ -61,26 +61,26 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Used for displaying animal type in lists
         public string DisplayName => GetType().Name;
 
-        // Returns summary for list display (Grade D)
+        // Returns summary for list display 
         public virtual string ToStringSummary()
         {
             string shortName = Name.Length > 12 ? Name.Substring(0, 12) : Name;
             return $"{Id,-8} {shortName,-12} {Age,6} {Weight,6:F1} {Gender}";
         }
 
-        // Sets sleep time (Grade C)
+        // Sets sleep time 
         public virtual void SetSleepTime()
         {
             sleepTime = 0;
         }
 
-        // Returns average lifespan (Grade C)
+        // Returns average lifespan 
         public abstract int GetAverageLifeSpan();
 
-        // Returns daily food requirements (Grade B)
+        // Returns daily food requirements
         public abstract Dictionary<string, string> DailyFoodRequirement();
 
-        // Returns upcoming events (Grade A)
+        // Returns upcoming events 
         public abstract Queue<string> GetUpcomingEvents();
 
         // Returns formatted animal information

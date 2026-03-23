@@ -12,7 +12,7 @@ namespace EcoPark_Animal_Management_System
     {
         // The created animal returned to MainForm
         public Animal CreatedAnimal { get; private set; }
-
+        private Animal editingAnimal = null;
         // Base animal inputs
         private TextBox txtName;
         private NumericUpDown numAge;
@@ -40,6 +40,33 @@ namespace EcoPark_Animal_Management_System
             this.category = category;
             this.species = species;
             InitializeUI();
+        }
+
+        public AnimalInputForm(Animal existingAnimal)
+        {
+            editingAnimal = existingAnimal;
+
+            // Detect category
+            if (existingAnimal.GetType().Namespace.Contains("mammal"))
+                category = "Mammal";
+            else if (existingAnimal.GetType().Namespace.Contains("birds"))
+                category = "Bird";
+            else
+                category = "Reptile";
+
+            // Detect species
+            species = existingAnimal.GetType().Name;
+
+            InitializeUI();
+
+            // Fill base values
+            txtName.Text = existingAnimal.Name;
+            numAge.Value = existingAnimal.Age;
+            numWeight.Value = (decimal)existingAnimal.Weight;
+            cmbGender.SelectedItem = existingAnimal.Gender.ToString();
+
+            // ✅ NOW copy category + species values
+            LoadExistingValues(existingAnimal);
         }
 
         // Builds the form dynamically based on category and species
@@ -144,22 +171,29 @@ namespace EcoPark_Animal_Management_System
         // Creates and populates the animal object
         private Animal CreateAnimal()
         {
-            Animal animal = null;
+            Animal animal;
 
-            // Create specific animal type based on species
-            if (species == "Dog") animal = new category.mammal.species.Dog();
-            else if (species == "Cat") animal = new category.mammal.species.Cat();
-            else if (species == "Cow") animal = new category.mammal.species.Cow();
-            else if (species == "Chicken") animal = new category.birds.species.Chicken();
-            else if (species == "Falcon") animal = new category.birds.species.Falcon();
-            else if (species == "Raven") animal = new category.birds.species.Raven();
-            else if (species == "Frog") animal = new category.reptiles.species.Frog();
-            else if (species == "Snake") animal = new category.reptiles.species.Snake();
-            else if (species == "Turtle") animal = new category.reptiles.species.Turtle();
+            //  EDIT MODE
+            if (editingAnimal != null)
+            {
+                animal = editingAnimal;
+            }
+            else
+            {
+                //  CREATE MODE
+                if (species == "Dog") animal = new category.mammal.species.Dog();
+                else if (species == "Cat") animal = new category.mammal.species.Cat();
+                else if (species == "Cow") animal = new category.mammal.species.Cow();
+                else if (species == "Chicken") animal = new category.birds.species.Chicken();
+                else if (species == "Falcon") animal = new category.birds.species.Falcon();
+                else if (species == "Raven") animal = new category.birds.species.Raven();
+                else if (species == "Frog") animal = new category.reptiles.species.Frog();
+                else if (species == "Snake") animal = new category.reptiles.species.Snake();
+                else if (species == "Turtle") animal = new category.reptiles.species.Turtle();
+                else return null;
+            }
 
-            if (animal == null) return null;
-
-            // Base properties
+            //  Update base fields
             animal.Name = txtName.Text;
             animal.Age = (int)numAge.Value;
             animal.Weight = (double)numWeight.Value;
@@ -168,10 +202,9 @@ namespace EcoPark_Animal_Management_System
                 cmbGender.SelectedItem.ToString()
             );
 
-            // Call SetSleepTime to initialize sleep time based on species
             animal.SetSleepTime();
 
-            // Category properties
+            // Category
             if (animal is category.mammal.Mammal m)
             {
                 m.NumberOfTeeth = (int)numCat1.Value;
@@ -191,7 +224,7 @@ namespace EcoPark_Animal_Management_System
                 r.LivesInWater = chkCat.Checked;
             }
 
-            // Species-specific properties
+            //  Species
             if (animal is category.mammal.species.Dog dog)
             {
                 dog.Breed = txtSpec.Text;
@@ -239,6 +272,76 @@ namespace EcoPark_Animal_Management_System
             }
 
             return animal;
+        }
+
+        private void LoadExistingValues(Animal animal)
+        {
+            // Category
+            if (animal is category.mammal.Mammal m)
+            {
+                numCat1.Value = m.NumberOfTeeth;
+                numCat2.Value = (decimal)m.TailLength;
+                chkCat.Checked = m.HasFur;
+            }
+            else if (animal is category.birds.Bird b)
+            {
+                numCat1.Value = (decimal)b.WingSpan;
+                txtCat.Text = b.FeatherColor;
+                chkCat.Checked = b.CanFly;
+            }
+            else if (animal is category.reptiles.Reptile r)
+            {
+                numCat1.Value = (decimal)r.BodyLength;
+                numCat2.Value = r.AggressivenessLevel;
+                chkCat.Checked = r.LivesInWater;
+            }
+
+            // Species
+            if (animal is category.mammal.species.Dog dog)
+            {
+                txtSpec.Text = dog.Breed;
+                chkSpec.Checked = dog.IsTrained;
+                numSpec1.Value = dog.LoyaltyLevel;
+            }
+            else if (animal is category.mammal.species.Cat cat)
+            {
+                txtSpec.Text = cat.FurColor;
+                chkSpec.Checked = cat.IsIndoor;
+            }
+            else if (animal is category.mammal.species.Cow cow)
+            {
+                numSpec1.Value = (decimal)cow.MilkProductionPerDay;
+            }
+            else if (animal is category.birds.species.Chicken chicken)
+            {
+                chkSpec.Checked = chicken.IsDomestic;
+                numSpec1.Value = chicken.EggsPerWeek;
+            }
+            else if (animal is category.birds.species.Falcon falcon)
+            {
+                numSpec1.Value = (decimal)falcon.FlyingSpeed;
+                numSpec2.Value = falcon.HuntingAccuracy;
+            }
+            else if (animal is category.birds.species.Raven raven)
+            {
+                txtSpec.Text = raven.BeakColor;
+                numSpec1.Value = raven.IntelligenceLevel;
+            }
+            else if (animal is category.reptiles.species.Frog frog)
+            {
+                numSpec1.Value = (decimal)frog.JumpHeight;
+                chkSpec.Checked = frog.CanLiveOnLand;
+            }
+            else if (animal is category.reptiles.species.Snake snake)
+            {
+                chkSpec.Checked = snake.IsVenomous;
+                numSpec1.Value = (decimal)snake.BiteRange;
+            }
+            else if (animal is category.reptiles.species.Turtle turtle)
+            {
+                numSpec1.Value = turtle.ShellWidth;
+                chkSpec.Checked = turtle.IsAquatic;
+            }
         }
 
         // Helper to add a labeled textbox

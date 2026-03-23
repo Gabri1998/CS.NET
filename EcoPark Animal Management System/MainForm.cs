@@ -11,7 +11,7 @@ namespace EcoPark_Animal_Management_System
         // Stores all created animals during runtime using AnimalManager
         private AnimalManager animalManager = new AnimalManager();
         private Animal currAnimal = null;           // Temporary working animal
-
+        private Animal editingAnimal = null;
         // UI controls
         private CheckBox chkListAll;
         private ListBox lstAnimals;
@@ -30,6 +30,7 @@ namespace EcoPark_Animal_Management_System
         private Button btnCreate;
         private Button btnLoadImage;
         private Button btnDelete;
+        private Button btnChange;
 
         // Constructor initializes form
         public MainForm()
@@ -155,6 +156,15 @@ namespace EcoPark_Animal_Management_System
             btnDelete.Click += BtnDelete_Click;
             Controls.Add(btnDelete);
 
+            btnChange = new Button
+            {
+                Text = "Change Animal",
+                Location = new Point(xRight, 100),
+                Size = new Size(150, 30)
+            };
+            btnChange.Click += BtnChange_Click;
+            Controls.Add(btnChange);
+
             // Image preview
             picAnimal = new PictureBox
             {
@@ -231,6 +241,31 @@ namespace EcoPark_Animal_Management_System
 
                 txtOutput.Text = "";
                 picAnimal.Image = null;
+            }
+        }
+
+
+        // Chenges the selected animal from the list
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            if (lstAnimals.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select an animal first.");
+                return;
+            }
+
+            Animal selected = animalManager.GetAt(lstAnimals.SelectedIndex);
+
+            using (var dlg = new AnimalInputForm(selected))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    
+                    RefreshList();
+
+                    txtOutput.Text = selected.ToString();
+                    picAnimal.ImageLocation = selected.ImagePath;
+                }
             }
         }
 
