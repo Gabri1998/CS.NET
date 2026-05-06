@@ -63,7 +63,7 @@ namespace EcoPark_Animal_Management_System
             int xRight = 520;
             int y = 20;
 
-            // ===== MENU =====
+            // MENU 
             menuStrip = new MenuStrip();
             menuStrip.Dock = DockStyle.Top;
             MainMenuStrip = menuStrip;
@@ -128,7 +128,7 @@ namespace EcoPark_Animal_Management_System
 
             y += menuStrip.Height + 10;
 
-            // ===== LEFT SIDE =====
+            //  LEFT SIDE
 
             chkListAll = new CheckBox
             {
@@ -173,7 +173,7 @@ namespace EcoPark_Animal_Management_System
             };
             Controls.Add(grpCategory);
 
-            // Flow layout panel (handles spacing automatically)
+            // Flow layout panel handles spacing automatically
             FlowLayoutPanel panel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -182,7 +182,7 @@ namespace EcoPark_Animal_Management_System
                 Padding = new Padding(10, 20, 0, 0)
             };
 
-            // Radio buttons (NO Location here!)
+            // Radio buttons 
             rbMammal = new RadioButton
             {
                 Text = "Mammal",
@@ -205,7 +205,7 @@ namespace EcoPark_Animal_Management_System
                 Margin = new Padding(10, 0, 10, 0)
             };
 
-            // Events (same as before)
+            // Events 
             rbMammal.CheckedChanged += (s, e) => UpdateSpecies();
             rbBird.CheckedChanged += (s, e) => UpdateSpecies();
             rbReptile.CheckedChanged += (s, e) => UpdateSpecies();
@@ -229,7 +229,7 @@ namespace EcoPark_Animal_Management_System
             };
             Controls.Add(cmbSpecies);
 
-            // ===== RIGHT SIDE =====
+            //  RIGHT SIDE 
 
             // Create
             btnCreate = new Button
