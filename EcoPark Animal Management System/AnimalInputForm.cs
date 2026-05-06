@@ -12,10 +12,7 @@ namespace EcoPark_Animal_Management_System
     {
         // The created animal returned to MainForm
         public Animal CreatedAnimal { get; private set; }
-
-
         private Animal editingAnimal = null;
-
         // Base animal inputs
         private TextBox txtName;
         private NumericUpDown numAge;
@@ -62,13 +59,13 @@ namespace EcoPark_Animal_Management_System
 
             InitializeUI();
 
-            // Base values
+            // Fill base values
             txtName.Text = existingAnimal.Name;
             numAge.Value = existingAnimal.Age;
             numWeight.Value = (decimal)existingAnimal.Weight;
             cmbGender.SelectedItem = existingAnimal.Gender.ToString();
 
-            // Category + species values
+            // ✅ NOW copy category + species values
             LoadExistingValues(existingAnimal);
         }
 
@@ -176,7 +173,7 @@ namespace EcoPark_Animal_Management_System
         {
             Animal animal;
 
-            //  EDIT MODE (reuse same object)
+            //  EDIT MODE
             if (editingAnimal != null)
             {
                 animal = editingAnimal;
@@ -196,7 +193,7 @@ namespace EcoPark_Animal_Management_System
                 else return null;
             }
 
-            // Base properties
+            //  Update base fields
             animal.Name = txtName.Text;
             animal.Age = (int)numAge.Value;
             animal.Weight = (double)numWeight.Value;
@@ -227,7 +224,7 @@ namespace EcoPark_Animal_Management_System
                 r.LivesInWater = chkCat.Checked;
             }
 
-            // Species
+            //  Species
             if (animal is category.mammal.species.Dog dog)
             {
                 dog.Breed = txtSpec.Text;
@@ -276,7 +273,6 @@ namespace EcoPark_Animal_Management_System
 
             return animal;
         }
-
 
         private void LoadExistingValues(Animal animal)
         {
@@ -347,6 +343,7 @@ namespace EcoPark_Animal_Management_System
                 chkSpec.Checked = turtle.IsAquatic;
             }
         }
+
         // Helper to add a labeled textbox
         private TextBox AddTextBox(string label, ref int y)
         {

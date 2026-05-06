@@ -13,10 +13,8 @@ namespace EcoPark_Animal_Management_System
     {
         // Stores all animals during runtime using AnimalManager
         private AnimalManager animalManager = new AnimalManager();
-
-        // Temporary working animal used when creating new animals
-        private Animal currAnimal = null;
-
+        private Animal currAnimal = null;           // Temporary working animal
+        private Animal editingAnimal = null;
         // UI controls
         private CheckBox chkListAll;
         private ListBox lstAnimals;
@@ -36,17 +34,6 @@ namespace EcoPark_Animal_Management_System
         private Button btnLoadImage;
         private Button btnDelete;
         private Button btnChange;
-
-        // MenuStrip
-        private MenuStrip menuStrip;
-        private ToolStripMenuItem fileMenu;
-        private ToolStripMenuItem newItem;
-        private ToolStripMenuItem openItem;
-        private ToolStripMenuItem saveItem;
-        private ToolStripMenuItem saveAsItem;
-
-        private ToolStripMenuItem helpMenu;
-        private ToolStripMenuItem aboutMenu;
 
         // Current file path
         private string currentFile = null;
@@ -254,7 +241,26 @@ namespace EcoPark_Animal_Management_System
             btnCreate.Click += BtnCreate_Click;
             Controls.Add(btnCreate);
 
-            // Image
+            // Delete animal button
+            btnDelete = new Button
+            {
+                Text = "Delete Animal",
+                Location = new Point(xRight, 60),
+                Size = new Size(150, 30)
+            };
+            btnDelete.Click += BtnDelete_Click;
+            Controls.Add(btnDelete);
+
+            btnChange = new Button
+            {
+                Text = "Change Animal",
+                Location = new Point(xRight, 100),
+                Size = new Size(150, 30)
+            };
+            btnChange.Click += BtnChange_Click;
+            Controls.Add(btnChange);
+
+            // Image preview
             picAnimal = new PictureBox
             {
                 Location = new Point(xRight, 70),
@@ -564,6 +570,31 @@ namespace EcoPark_Animal_Management_System
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     // Object already updated (same reference)
+                    RefreshList();
+
+                    txtOutput.Text = selected.ToString();
+                    picAnimal.ImageLocation = selected.ImagePath;
+                }
+            }
+        }
+
+
+        // Chenges the selected animal from the list
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            if (lstAnimals.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select an animal first.");
+                return;
+            }
+
+            Animal selected = animalManager.GetAt(lstAnimals.SelectedIndex);
+
+            using (var dlg = new AnimalInputForm(selected))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    
                     RefreshList();
 
                     txtOutput.Text = selected.ToString();

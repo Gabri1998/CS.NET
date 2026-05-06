@@ -59,7 +59,7 @@ namespace EcoPark_Animal_Management_System.animal_gen
         // Backing field for sleep time 
         protected double sleepTime;
 
-        // Sleep time property 
+        // Sleep time property
         public double SleepTime
         {
             get => sleepTime;
@@ -97,19 +97,13 @@ namespace EcoPark_Animal_Management_System.animal_gen
         }
 
         // Returns average lifespan 
-        public virtual int GetAverageLifeSpan()
-        {
-            return 0;
-        }
+        public abstract int GetAverageLifeSpan();
 
-        // Returns daily food requirements 
-        public virtual Dictionary<string, string> DailyFoodRequirement()
-        {
-           return new Dictionary<string, string>();
-        }
+        // Returns daily food requirements
+        public abstract Dictionary<string, string> DailyFoodRequirement();
 
         // Returns upcoming events 
-        public virtual Queue<string> GetUpcomingEvents() {  return new Queue<string>(); }
+        public abstract Queue<string> GetUpcomingEvents();
 
         // Returns formatted animal information
         public override string ToString()
