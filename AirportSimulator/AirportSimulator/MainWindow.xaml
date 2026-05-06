@@ -7,52 +7,71 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="526" Width="800">
 
+    <!-- Main layout grid -->
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
+            <!-- Input section -->
             <ColumnDefinition Width="3*"/>
+            <!-- Display section -->
         </Grid.ColumnDefinitions>
 
         <!-- LEFT: Input form -->
         <StackPanel Grid.Column="0" Margin="10">
 
             <TextBlock Text="Flight Name"/>
+            <!-- Label for name -->
             <TextBox x:Name="NameBox"/>
+            <!-- Input for flight name -->
 
             <TextBlock Text="Flight Number"/>
+            <!-- Label for number -->
             <TextBox x:Name="FlightNumberBox"/>
+            <!-- Input for flight number -->
 
             <TextBlock Text="Destination"/>
+            <!-- Label for destination -->
             <TextBox x:Name="DestinationBox"/>
+            <!-- Input for destination -->
 
             <TextBlock Text="Flight Time (hours)"/>
+            <!-- Label for duration -->
             <TextBox x:Name="TimeBox"/>
+            <!-- Input for flight time -->
 
             <Button Content="Add Plane"
-                Margin="10"
-                Click="AddAirplane_Click"/>
+                    Margin="10"
+                    Click="AddAirplane_Click"/>
+            <!-- Adds airplane -->
 
             <Button Content="Take Off"
-                Margin="10"
-                Click="TakeOff_Click"/>
+                    Margin="10"
+                    Click="TakeOff_Click"/>
+            <!-- Starts flight -->
         </StackPanel>
 
         <!-- RIGHT: Planes + Log -->
         <StackPanel Grid.Column="1" Margin="10">
 
             <TextBlock Text="Flights" FontWeight="Bold"/>
+            <!-- Section title -->
             <ListBox x:Name="AirplaneList" Height="150"/>
+            <!-- Displays airplanes -->
 
             <Button Content="Change Altitude"
-                Margin="5"
-                Click="Altitude_Click"/>
+                    Margin="5"
+                    Click="Altitude_Click"/>
+            <!-- Changes altitude -->
 
             <Button Content="Remove"
-                Margin="5"
-                Click="Remove_Click"/>
+                    Margin="5"
+                    Click="Remove_Click"/>
+            <!-- Removes airplane -->
 
             <TextBlock Text="Log" FontWeight="Bold"/>
+            <!-- Log title -->
             <ListBox x:Name="LogList" Height="200"/>
+            <!-- Displays logs -->
         </StackPanel>
     </Grid>
 

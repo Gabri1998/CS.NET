@@ -29,67 +29,60 @@ namespace AirportSimulator
 
         public MainWindow()
         {
-            InitializeComponent();
-            AirplaneList.ItemsSource = airplanes;
-            tower.AirplaneTookOff += OnTakeOff;
-            tower.AirplaneLanded += OnLanded;
-            tower.AltitudeChanged += OnAltitudeChanged;
+            InitializeComponent(); // Initialize UI
+            AirplaneList.ItemsSource = airplanes; // Bind list to collection
+            tower.AirplaneTookOff += OnTakeOff; // Subscribe to takeoff event
+            tower.AirplaneLanded += OnLanded; // Subscribe to landing event
+            tower.AltitudeChanged += OnAltitudeChanged; // Subscribe to altitude event
         }
-
 
         private void OnTakeOff(object? sender, AirplaneEventArgs e)
         {
-            Log(e.Message);
-            AirplaneList.Items.Refresh();
+            Log(e.Message); // Log takeoff
+            AirplaneList.Items.Refresh(); // Refresh UI
         }
 
         private void OnLanded(object? sender, AirplaneEventArgs e)
         {
-            Log(e.Message);
-            AirplaneList.Items.Refresh();
+            Log(e.Message); // Log landing
+            AirplaneList.Items.Refresh(); // Refresh UI
         }
 
         private void OnAltitudeChanged(object? sender, AirplaneEventArgs e)
         {
-            Log(e.Message);
-            AirplaneList.Items.Refresh();
+            Log(e.Message); // Log altitude change
+            AirplaneList.Items.Refresh(); // Refresh UI
         }
 
         private void Log(string message)
         {
-            LogList.Items.Add($"{DateTime.Now:HH:mm:ss} - {message}");
-            LogList.ScrollIntoView(LogList.Items[^1]);
+            LogList.Items.Add($"{DateTime.Now:HH:mm:ss} - {message}"); // Add log entry
+            LogList.ScrollIntoView(LogList.Items[^1]); // Scroll to latest
         }
-
 
         private void AddAirplane_Click(object? sender, RoutedEventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(NameBox.Text))
             {
                 Log("Name required");
                 return;
             }
 
-            // Validate Flight Number
             if (!int.TryParse(FlightNumberBox.Text, out int flightNumber))
             {
                 Log("Invalid Flight Number");
                 return;
             }
 
-            // Validate Time
             if (!int.TryParse(TimeBox.Text, out int timeMinute))
             {
                 Log("Invalid Flight Time");
                 return;
             }
 
-            // Validate text fields
-            if (string.IsNullOrWhiteSpace(DestinationBox.Text) ||
-                string.IsNullOrWhiteSpace(NameBox.Text))
+            if (string.IsNullOrWhiteSpace(DestinationBox.Text))
             {
-                Log("Name and Destination required");
+                Log("Destination required");
                 return;
             }
 
@@ -107,8 +100,8 @@ namespace AirportSimulator
                 FlightTime = TimeSpan.FromHours(timeMinute)
             };
 
-            tower.AddAirplane(plane);
-            airplanes.Add(plane);
+            tower.AddAirplane(plane); // Register in control tower
+            airplanes.Add(plane); // Add to UI list
 
             Log($"Flight {flightNumber} added.");
 
@@ -116,24 +109,11 @@ namespace AirportSimulator
             FlightNumberBox.Clear();
             DestinationBox.Clear();
             TimeBox.Clear();
-
         }
 
         private void TakeOff_Click(object? sender, RoutedEventArgs e)
         {
-            var plane = AirplaneList.SelectedItem as Airplane;
-
-            if (plane == null) { 
-                Log("Select a plane first");
-            return; }
-
-            if (!tower.AuthorizeTakeOff(plane))
-                Log("Plane already in flight.");
-        }
-
-        private void Altitude_Click(object? sender, RoutedEventArgs e)
-        {
-            var plane = AirplaneList.SelectedItem as Airplane;
+            var plane = AirplaneList.SelectedItem as Airplane; // Get selected plane
 
             if (plane == null)
             {
@@ -141,12 +121,26 @@ namespace AirportSimulator
                 return;
             }
 
-            tower.ChangeAltitude(plane, 1000);
+            if (!tower.AuthorizeTakeOff(plane))
+                Log("Plane already in flight."); // Prevent duplicate takeoff
+        }
+
+        private void Altitude_Click(object? sender, RoutedEventArgs e)
+        {
+            var plane = AirplaneList.SelectedItem as Airplane; // Get selected plane
+
+            if (plane == null)
+            {
+                Log("Select a plane first");
+                return;
+            }
+
+            tower.ChangeAltitude(plane, 1000); // Change altitude
         }
 
         private void Remove_Click(object? sender, RoutedEventArgs e)
         {
-            var plane = AirplaneList.SelectedItem as Airplane;
+            var plane = AirplaneList.SelectedItem as Airplane; // Get selected plane
 
             if (plane == null)
             {
@@ -155,9 +149,9 @@ namespace AirportSimulator
             }
 
             if (tower.RemoveAirplane(plane))
-                airplanes.Remove(plane);
+                airplanes.Remove(plane); // Remove from UI
             else
-                Log("Cannot remove plane in flight.");
+                Log("Cannot remove plane in flight."); // Prevent invalid removal
         }
 
     }
