@@ -54,6 +54,7 @@
     <Compile Include="AnimalInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AnimalManager.cs" />
     <Compile Include="category\birds\Bird.cs" />
     <Compile Include="category\birds\species\Chicken.cs" />
     <Compile Include="category\birds\species\Falcon.cs" />
@@ -66,6 +67,9 @@
     <Compile Include="category\reptiles\species\Frog.cs" />
     <Compile Include="category\reptiles\species\Snake.cs" />
     <Compile Include="category\reptiles\species\Turtle.cs" />
+    <Compile Include="IAnimal.cs" />
+    <Compile Include="IListManager.cs" />
+    <Compile Include="ListManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -3,8 +3,8 @@ using System;
 
 namespace EcoPark_Animal_Management_System.category.birds
 {
-    // Abstract base class for all bird animals
-    abstract class Bird : Animal
+    // Base class for all bird animals
+    public abstract class Bird : Animal
     {
         // Backing field for wing span
         private double span;
@@ -22,7 +22,7 @@ namespace EcoPark_Animal_Management_System.category.birds
         // Color of the bird's feathers
         public string FeatherColor { get; set; }
 
-        // Returns full string representation including bird-specific data
+        // Returns base animal info plus bird-specific info
         public override string ToString()
         {
             return base.ToString() +

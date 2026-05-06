@@ -4,7 +4,7 @@ using System;
 namespace EcoPark_Animal_Management_System.category.mammal
 {
     // Base class for all mammal animals
-    abstract class Mammal : Animal
+    public abstract class Mammal : Animal
     {
         // Backing field for number of teeth
         private int num;

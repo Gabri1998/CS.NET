@@ -4,7 +4,7 @@ using System;
 namespace EcoPark_Animal_Management_System.category.reptiles
 {
     // Base class for all reptile animals
-    abstract class Reptile : Animal
+    public abstract class Reptile : Animal
     {
         // Length of the reptile's body
         public double BodyLength { get; set; }
