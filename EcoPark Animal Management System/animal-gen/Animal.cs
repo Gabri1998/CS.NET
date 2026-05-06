@@ -1,11 +1,25 @@
-﻿using EcoPark_Animal_Management_System.enums;
+﻿using EcoPark_Animal_Management_System.category.birds.species;
+using EcoPark_Animal_Management_System.category.mammal.species;
+using EcoPark_Animal_Management_System.category.reptiles.species;
+using EcoPark_Animal_Management_System.enums;
 using System;
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 namespace EcoPark_Animal_Management_System.animal_gen
 {
+
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Dog), "dog")]
+    [JsonDerivedType(typeof(Cat), "cat")]
+    [JsonDerivedType(typeof(Cow), "cow")]
+    [JsonDerivedType(typeof(Falcon), "falcon")]
+    [JsonDerivedType(typeof(Chicken), "chicken")]
+    [JsonDerivedType(typeof(Raven), "raven")]
+    [JsonDerivedType(typeof(Frog), "frog")]
+    [JsonDerivedType(typeof(Snake), "snake")]
+    [JsonDerivedType(typeof(Turtle), "turtle")]
     // Base abstract class for all animals in the system
-    public abstract class Animal : IAnimal
+    public  class Animal : IAnimal
     {
         // Static counter used to generate unique IDs
         private static int idCounter = 1;
@@ -51,21 +65,29 @@ namespace EcoPark_Animal_Management_System.animal_gen
             get => sleepTime;
         }
 
-        // Constructor assigns a unique ID automatically
-        protected Animal()
+        // Constructor just in case assigns a unique ID automatically
+        public Animal()
         {
-            Id = "AN-" + idCounter.ToString("D3");
-            idCounter++;
+            if (string.IsNullOrEmpty(Id))
+            {
+                Id = "AN-" + idCounter.ToString("D3");
+                idCounter++;
+            }
         }
 
         // Used for displaying animal type in lists
-        public string DisplayName => GetType().Name;
+        public string DisplayName => ToStringSummary();
 
         // Returns summary for list display 
         public virtual string ToStringSummary()
         {
-            string shortName = Name.Length > 12 ? Name.Substring(0, 12) : Name;
-            return $"{Id,-8} {shortName,-12} {Age,6} {Weight,6:F1} {Gender}";
+            string type = GetType().Name;
+
+            string shortName = string.IsNullOrEmpty(Name)
+                ? ""
+                : (Name.Length > 12 ? Name.Substring(0, 12) : Name);
+
+            return $"{type,-10} {Id,-6} {shortName,-12} {Age,4} {Gender}";
         }
 
         // Sets sleep time 
@@ -98,14 +120,14 @@ namespace EcoPark_Animal_Management_System.animal_gen
             result += $"  Avg Lifespan: {GetAverageLifeSpan()} years{Environment.NewLine}";
 
             result += "\r\nDaily Food Requirements:\r\n";
-            Dictionary<string, string> food = DailyFoodRequirement();
+            var food = DailyFoodRequirement() ?? new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> meal in food)
             {
                 result += $"  {meal.Key}: {meal.Value}{Environment.NewLine}";
             }
 
             result += "\r\nUpcoming Events:\r\n";
-            Queue<string> events = GetUpcomingEvents();
+            var events = GetUpcomingEvents() ?? new Queue<string>();
             string[] eventArray = events.ToArray();
             foreach (string e in eventArray)
             {

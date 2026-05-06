@@ -1,6 +1,9 @@
-﻿using System;
+﻿using EcoPark_Animal_Management_System.animal_gen;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace EcoPark_Animal_Management_System
 {
